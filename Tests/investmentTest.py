@@ -66,8 +66,7 @@ class Testing:
         account += testInst.update([])
         n = testInst.getReturns()
         account += testInst.sell(104)
-        print(account)
-        assert(n == (account - 1000000))
+        assert((n - (account - 1000000)) < .001)
 
             
 

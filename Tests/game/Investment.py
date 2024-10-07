@@ -29,7 +29,7 @@ class Investment:
     
     #returns the total increase that the investment has had over it's purchase price
     def getIncrease(self) -> float:
-        return ((self.getprice() * self.quantity) - (self.costBasisAvg * self.quantity))
+        return ((self.getprice() - self.costBasisAvg)* self.quantity)
     
     #Takes in an amount and returns the price that was required to buy that amount
     def buy(self,amount: float) -> float:
