@@ -1,5 +1,6 @@
 class Investment:
     def __init__(self,name: str, value: float, description: str):
+        self.delete = False
         self.name = name
         self.value = value
         self.description = description
@@ -8,9 +9,11 @@ class Investment:
         self.costBasisAvg = 0
    
         
-    #updates the state of the item for one step forward in time. 
-    def update(self,world):
+    #updates the state of the item for one step forward in time.
+    # returns the payment recieved 
+    def update(self,world) -> float:
         self.history.append(self.getprice())
+        return 0
     
     #returns the price that the item is currently selling for no arguments
     def getprice(self)-> float:
