@@ -1,11 +1,11 @@
-from Investment import *
+from game.Investment import *
 
 class Bond(Investment):
-    def __init__(self,name: str, value: float, description: str,rate: float, minimimPayment: float):
+    def __init__(self,name: str, value: float, description: str,rate: float, minimumPayment: float):
         super().__init__(name, value, description)
-        self.rate = rate
-        self.minimumPayment = minimimPayment
-        self.totalPayments = 0
+        self.rate = rate/4
+        self.minimumPayment = minimumPayment
+
 
 
     #updates the state of the bond for one step forward in time. 
@@ -21,5 +21,5 @@ class Bond(Investment):
         self.history.append(self.getprice())
         if self.value == 0:
             self.delete = True
-        self.totalPayments += payment
-        return payment
+        self.totalPayments += (payment * self.quantity)
+        return payment * self.quantity

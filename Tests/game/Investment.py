@@ -7,6 +7,7 @@ class Investment:
         self.history = []
         self.quantity = 0
         self.costBasisAvg = 0
+        self.totalPayments = 0
    
         
     #updates the state of the item for one step forward in time.
@@ -23,6 +24,9 @@ class Investment:
     def gethistory(self)-> list:
         return self.history
         
+    def getReturns(self) -> float:
+        return self.totalPayments + (self.getIncrease())
+    
     #returns the total increase that the investment has had over it's purchase price
     def getIncrease(self) -> float:
         return ((self.getprice() * self.quantity) - (self.costBasisAvg * self.quantity))

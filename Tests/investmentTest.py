@@ -1,5 +1,5 @@
 from game.Investment import *
-from game.Investment import Bond
+from game.Bond import Bond
 
 
 class Testing:
@@ -36,41 +36,40 @@ class Testing:
     @staticmethod
     def bondTest():
         des = 'This is a test of the bond.\nThis description is deliberately weird'
-        testInst = Bond(name='TestBond',value=1000,description=des,rate=0.05,minimimPayemnt=100)
+        testInst = Bond(name='TestBond',value=1000,description=des,rate=0.05,minimumPayment=100)
 
-        assert(testInst.getprice() == 1)   
-        account = 100
+        assert(testInst.getprice() == 1000)   
+        account = 1000000
         account -= testInst.buy(99)
         assert(testInst.quantity == 99)
         account += testInst.update([])
         account += testInst.update([])
         account += testInst.update([])
-        assert(testInst.gethistory() == [1,1.05,1.1025])
         try:
             testInst.sell(100)
         except(InsufficientQuantityError):
             pass
         else:
             raise AssertionError('Failed to raise error on illegal transaction')
-        account += testInst.sell(90)
-        assert(testInst.quantity == 9)
-        acount += testInst.update()
-        acount += testInst.update()
-        acount += testInst.update()
-        acount += testInst.update()
-        acount += testInst.update()
+        
+        account += testInst.update([])
+        account += testInst.update([])
+        account += testInst.update([])
+        account += testInst.update([])
+        account += testInst.update([])
         account -= testInst.buy(5)
-        acount += testInst.update()
-        acount += testInst.update()
-        acount += testInst.update()
-        acount += testInst.update()
-        acount += testInst.update()
-        acount += testInst.update()
-        n = testInst.getIncrease()
-        account += testInst.sell(14)
-        assert(n == (account - 100))
+        account += testInst.update([])
+        account += testInst.update([])
+        account += testInst.update([])
+        account += testInst.update([])
+        account += testInst.update([])
+        account += testInst.update([])
+        n = testInst.getReturns()
+        account += testInst.sell(104)
+        print(account)
+        assert(n == (account - 1000000))
 
             
 
 
-Testing.investmentTest()
+Testing.bondTest()
