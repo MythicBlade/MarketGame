@@ -68,6 +68,12 @@ class Testing:
         account += testInst.sell(104)
         assert((n - (account - 1000000)) < .001)
 
+        Bondtest = Bond('i',100,'hi',0.05,200)
+        Bondtest.buy(1)
+        u = Bondtest.update([])
+        assert(u == 101.25)
+        assert(Bondtest.delete == True)
+
             
 
 
