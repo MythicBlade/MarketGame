@@ -1,6 +1,4 @@
 import matplotlib.pyplot as plt
-from numpy import arange
-from numpy import average
 from matplotlib.colors import is_color_like
 
 
@@ -79,7 +77,8 @@ class Chart():
                 width = 0.8,color = (self.palette[2])) 
     
 
-
+'''
 x = Chart([1,2,3,4,5,6,7,8],[76,54,6,4,32,5,7,4])
 x.makeLine()
 x.drawGraph()
+'''
